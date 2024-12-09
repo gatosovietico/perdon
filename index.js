@@ -2,19 +2,37 @@ const yesBtn = document.querySelector('#yesBtn');
 const noBtn = document.querySelector('#noBtn');
 const message = document.querySelector('.contenedor p'); 
 
+const videos = ["imgs/Gato1.mp4", "imgs/Gato2.mp4"];
+let currentVideoIndex = 0;
+
+const videoPlayer = document.getElementById("videoPlayer");
+const videoSource = document.getElementById("videoSource");
+
+videoPlayer.addEventListener("ended", () => {
+    currentVideoIndex++;
+    if (currentVideoIndex < videos.length) {
+        videoSource.src = videos[currentVideoIndex];
+        videoPlayer.load(); 
+        videoPlayer.play();
+    }
+});
+
+// Botón "Sí"
+yesBtn.addEventListener('click', function () {
+    alert('Te amooooooo❤');
+});
+
+// Botón "No"
 const phrases = [
     "¿Estás segura?",
     "Piénsalo bien...",
     "¿Por qué no me perdonas?",
     "Te haré reír...",
     "No seas mala 😢",
-    "¿De verdad no?"
+    "¿De verdad no?",
+    "No seas mala",
+    "Pofissss"
 ];
-
-yesBtn.addEventListener('click', function () {
-    alert('Te amooooooo❤');
-});
-
 
 noBtn.addEventListener('mouseover', function () {
     const randomX = Math.random() * 90;
