@@ -2,24 +2,20 @@ const yesBtn = document.querySelector('#yesBtn');
 const noBtn = document.querySelector('#noBtn');
 const message = document.querySelector('.contenedor p'); 
 
-// Lista de videos
 const videos = ["imgs/Gato1.mp4", "imgs/Gato2.mp4"];
 let currentVideoIndex = 0;
 
-// Referencias al video y su fuente
 const videoPlayer = document.getElementById("videoPlayer");
 const videoSource = document.getElementById("videoSource");
 
-// Asegurarse de reproducir el primer video al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     videoPlayer.play();
 });
 
-// Cambiar video cuando termina el actual
 videoPlayer.addEventListener("ended", () => {
     currentVideoIndex++;
     if (currentVideoIndex >= videos.length) {
-        currentVideoIndex = 0; // Reinicia al primer video
+        currentVideoIndex = 0; 
     }
     videoSource.src = videos[currentVideoIndex];
     videoPlayer.load(); 
@@ -28,7 +24,7 @@ videoPlayer.addEventListener("ended", () => {
 
 // Botón "Sí"
 yesBtn.addEventListener('click', function () {
-    alert('Te amooooooo❤');
+    window.location.href = "carta.html"; // Redirige al archivo carta.html
 });
 
 // Botón "No"
