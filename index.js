@@ -2,19 +2,28 @@ const yesBtn = document.querySelector('#yesBtn');
 const noBtn = document.querySelector('#noBtn');
 const message = document.querySelector('.contenedor p'); 
 
-// Configurar el video directamente en bucle
+// Lista de videos
+const videos = ["imgs/Gato1.mp4", "imgs/Gato2.mp4"];
+let currentVideoIndex = 0;
+
+// Referencias al video y su fuente
 const videoPlayer = document.getElementById("videoPlayer");
 const videoSource = document.getElementById("videoSource");
 
-// Cambiar el video inicial a Gato2.mp4
-videoSource.src = "imgs/Gato2.mp4";
-videoPlayer.loop = true; // Activar el bucle
-videoPlayer.volume = 1.0; // Configurar volumen al máximo (1.0)
-videoPlayer.load();
+// Asegurarse de reproducir el primer video al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    videoPlayer.play();
+});
 
-// Manejar reproducción después de la interacción
-document.body.addEventListener('click', () => {
-    videoPlayer.play(); // Reproducir video tras interacción
+// Cambiar video cuando termina el actual
+videoPlayer.addEventListener("ended", () => {
+    currentVideoIndex++;
+    if (currentVideoIndex >= videos.length) {
+        currentVideoIndex = 0; // Reinicia al primer video
+    }
+    videoSource.src = videos[currentVideoIndex];
+    videoPlayer.load(); 
+    videoPlayer.play();
 });
 
 // Botón "Sí"
